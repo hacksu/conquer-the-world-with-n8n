@@ -100,7 +100,7 @@ This will require us to first select "Define below" from the "Source for Prompt"
 
 This prompt should essentially say something like this:
 
-`
+```
 You are a costume email designer who specializes in making visually appealing and colorful emails using html. I have collected the next 5 days worth of weather data, as well as news from 5 cool articles! I was wondering if you could make me an email that gives me an overview of the weather as well as a summary that showcases the title, author, important details and the link to view the actual article. When summarizing the articles, do not make up your own infomration, only use the information provided in the content. 
 
 This email is used as my daily summary, and it will be sent to myself. You can use a light purple color scheme and please make the email look appealing in both desktop and mobile view as I will primarily be reading this from my phone.
@@ -109,7 +109,7 @@ Please only include the HTML, not any filler text before the html starts. Plus m
 
 {{ JSON.stringify($json.data, null, 2) }}
 
-`
+```
 
 
 Once our LLM is all set up, the final piece is to set up our email client for sending emails to ourself every morning for our daily newsletter. So we will choose the "Gmail account node" and more specifically we want to send a message to select the "Send a message" node. Once you choose the node, we need to make a new credential to allow n8n to access your gmail. So go to make a credential and login in google.
