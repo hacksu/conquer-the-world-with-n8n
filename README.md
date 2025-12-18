@@ -57,17 +57,20 @@ To continue off our of RSS Reader, we can see that it returns us back 50 differe
 In addition, we get returned back to us 50 articles, which is a lot to deal with. So let us limit that amount with a "Limit" node. This node limits the amount of items that we are working with. Lets limit the amount of items to 5.
 
 Okay awesome, now we have a lot of different data fields that we do not need in our final newsletter, so lets choose only the ones we want to keep. We will use the "Edit fields" node and after running the previous nodes to get the data, we can drag and drop over the different fields to keep in our new data. In this case we should keep "title", "creator", "link", and "contentSnipper". 
-<img width="1413" height="917" alt="image" src="https://github.com/user-attachments/assets/68dbf3d2-7516-49b3-8530-8fb37905197a" />
+<img width="551" height="857" alt="image" src="https://github.com/user-attachments/assets/3447468a-d547-4fc0-b74c-ec75a7476c5c" />
+
 
 Perfect! So now we are at a happy spot with our current article data. Lets move back to our weather data.
 
 We can fill out the weather data parameters, and successfully pull in weather data!
-<img width="1100" height="475" alt="image" src="https://github.com/user-attachments/assets/ad052c4c-46f8-4791-8e4b-83bf6d56799c" />
+<img width="546" height="869" alt="image" src="https://github.com/user-attachments/assets/e00559b8-d59a-427b-a0e9-326a89b4cf21" />
+
 
 Which after taking a look at the data we get, we can filter out some of the data to a set of information we are happy with utilizng the "Edit fields" node again. We can choose all the weather fields we would wish to have in our ending application, and then execute the node to make sure things are edited properly!
-<img width="1080" height="850" alt="image" src="https://github.com/user-attachments/assets/642def99-161e-400d-9813-1ad84be9ee1c" />
+<img width="549" height="867" alt="image" src="https://github.com/user-attachments/assets/fd7cc7b9-bde5-4787-bf0e-0c6274604140" />
 
-## Combing the data and creating our email
+
+## Combining the data and creating our email
 Now that we have grabbed and filtered out our data to be more focused for what we would like, we can finally put it together and build a newsletter!
 
 To put all of our data together, we can use a "Merge" node with basic settings and then immedietly after we can use an aggregate node to combine everything together into one item field. Which make sure to select "All Item Data" as our aggregated set.
@@ -92,6 +95,21 @@ Now that we have an API key created, we can copy the API key and lets go back to
 We will select the model area of this node and we will select "Google Gemini API Account" for our model. With pasting in our API key in the API key field.
 
 And now we can set up our LLM!
+
+This will require us to first select "Define below" from the "Source for Prompt" section. And now we can give our own prompt to the LLM.
+
+This prompt should essentially say something like this:
+
+`
+You are a costume email designer who specializes in making visually appealing and colorful emails using html. I have collected the next 5 days worth of weather data, as well as news from 5 cool articles! I was wondering if you could make me an email that gives me an overview of the weather as well as a summary that showcases the title, author, important details and the link to view the actual article. When summarizing the articles, do not make up your own infomration, only use the information provided in the content. 
+
+This email is used as my daily summary, and it will be sent to myself. You can use a light purple color scheme and please make the email look appealing in both desktop and mobile view as I will primarily be reading this from my phone.
+
+Please only include the HTML, not any filler text before the html starts. Plus make the weather more consice, try to keep the weather data all together in one or two columns/boxes
+
+{{ JSON.stringify($json.data, null, 2) }}
+
+`
 
 
 Once our LLM is all set up, the final piece is to set up our email client for sending emails to ourself every morning for our daily newsletter. So we will choose the "Gmail account node" and more specifically we want to send a message to select the "Send a message" node. Once you choose the node, we need to make a new credential to allow n8n to access your gmail. So go to make a credential and login in google.
