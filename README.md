@@ -1,5 +1,8 @@
 # conquer-the-world-with-n8n
 
+## Presentation:
+[here](https://docs.google.com/presentation/d/1d93VWN9dFiaA33XMf8htnf5b6m8eEsReRrhBWmg8s-w/edit?usp=sharing)
+
 Currently a work in progress. N8n is a really powerful program for automating all sorts of tasks. We will cover how to automate a few cool things!
 
 As a note, the cloud portion of n8n does cost money, but they have a 1 week free trial that we can utilize at the meeting, or I can set up a local n8n environment on a server or machine.
